@@ -1,4 +1,4 @@
-# ignore these files
+# Ignore these files
 site_generator/__pycache__
 site_generator/generated_html
 create_local_release.sh
