@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded and parsed');
+
     // Sidebar functionality (only on course site)
     const sidebarToggle = document.getElementById('toggleSidebar');
     const sidebar = document.getElementById('sidebar');
@@ -8,7 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const videoItems = document.querySelectorAll('.video-item');
 
     if (sidebarToggle && sidebar && content && videoPlayer && videoTitle && videoItems) {
+        console.log('Sidebar elements found');
+
         sidebarToggle.addEventListener('click', function() {
+            console.log('Sidebar toggle clicked');
             sidebar.classList.toggle('collapsed');
             content.classList.toggle('full-width');
         });
@@ -16,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         videoItems.forEach(item => {
             item.addEventListener('click', function() {
                 const videoSrc = item.getAttribute('data-video-src');
+                console.log('Video item clicked:', videoSrc);
                 videoPlayer.src = videoSrc;
 
                 const activeItem = document.querySelector('.video-item.active');
@@ -27,26 +33,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 videoTitle.textContent = item.textContent;
             });
         });
+    } else {
+        console.log('Sidebar elements not found');
     }
 
     // Dark mode toggle functionality (common to both course site and homepage)
-    const toggleDarkMode = document.getElementById('toggleDarkMode');
-    if (toggleDarkMode) {
-        toggleDarkMode.addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+        console.log('Dark mode toggle found');
+        darkModeToggle.addEventListener('change', function() {
+            console.log('Dark mode toggle changed');
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
             localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
-            toggleDarkMode.textContent = isDarkMode ? '☀️' : '🌙';
         });
 
         // Initialize dark mode state based on localStorage
         const storedDarkMode = localStorage.getItem('darkMode') === 'true';
-        if (storedDarkMode) {
-            document.body.classList.add('dark-mode');
-            toggleDarkMode.textContent = '☀️';
-        } else {
-            document.body.classList.remove('dark-mode');
-            toggleDarkMode.textContent = '🌙';
-        }
+        document.body.classList.toggle('dark-mode', storedDarkMode);
+        darkModeToggle.checked = storedDarkMode;
+        console.log('Dark mode initialized to', storedDarkMode);
+    } else {
+        console.log('Dark mode toggle not found');
     }
 });
