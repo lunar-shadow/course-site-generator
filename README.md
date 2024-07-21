@@ -6,17 +6,23 @@ Here are some screenshots of how the site shows up.
 
 ### Homepage 
 
-<div style="display: flex; justify-content: space-around;">
-    <img src="site_generator/assets/images/homepage_light.png" alt="homepage_light" style="max-width: 45%; height: auto;">
-    <img src="site_generator/assets/images/homepage_dark.png" alt="homepage_dark" style="max-width: 45%; height: auto;">
-</div>
+<table>
 
-### Course Pages
+  <tr>
+    <td><img src="site_generator/assets/images/homepage_light.png" alt="homepage_light" width="400"></td>
+    <td><img src="site_generator/assets/images/homepage_dark.png" alt="homepage_dark" width="400"></td>
+  </tr>
+</table>
 
-<div style="display: flex; justify-content: space-around;">
-    <img src="site_generator/assets/images/course_page_light.png" alt="course_page_light" style="max-width: 45%; height: auto;">
-    <img src="site_generator/assets/images/course_page_dark.png" alt="course_page_dark" style="max-width: 45%; height: auto;">
-</div>
+### Course Pages 
+
+<table>
+  <tr>
+    <td><img src="site_generator/assets/images/course_page_light.png" alt="course_page_light" width="400"></td>
+    <td><img src="site_generator/assets/images/course_page_dark.png" alt="course_page_dark" width="400"></td>
+  </tr>
+</table>
+
 
 ## Setup via installer in one step
 Run the installer in your course directory:
