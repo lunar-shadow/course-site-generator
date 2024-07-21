@@ -264,7 +264,7 @@ def generate_html(course_dir, course_name, output_file):
         </div>
         <footer>
              &copy; {current_year} <a href="https://github.com/lunar-shadow" target="_blank">lunar-shadow</a>. All rights reserved. 
-             Licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank" style="color: inherit;">MIT License</a>.
+             Licensed under the <a href="https://github.com/lunar-shadow/course-site-generator/blob/main/LICENSE.txt" target="_blank" style="color: inherit;">MIT License</a>.
         </footer>
         <script src="../assets/js/script.js"></script> 
     </body>

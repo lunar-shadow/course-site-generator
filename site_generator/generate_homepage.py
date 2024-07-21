@@ -86,6 +86,15 @@ def generate_index_html(courses, current_directory):
                 height: 60px;
                 margin-bottom: 10px;
             }}
+            .dark-icon {{
+                display: none;
+            }}
+            .dark-mode .light-icon {{
+                display: none;
+            }}
+            .dark-mode .dark-icon {{
+                display: inline;
+            }}
             .switch {{
                 position: fixed;
                 top: 9px;
@@ -174,7 +183,8 @@ def generate_index_html(courses, current_directory):
         html_content += f"""
             <div class="course-card">
                 <a href="{os.path.basename(course_file)}">
-                    <img src="../assets/images/video-icon.png" alt="Video Icon">
+                    <img src="../assets/images/light-video-icon.svg" alt="Light Video Icon" class="light-icon">
+                    <img src="../assets/images/dark-video-icon.svg" alt="Dark Video Icon" class="dark-icon">
                     <h3>{display_course_name}</h3>
                 </a>
             </div>
@@ -189,7 +199,7 @@ def generate_index_html(courses, current_directory):
         </label>
         <footer>
              &copy; {current_year} <a href="https://github.com/lunar-shadow" target="_blank">lunar-shadow</a>. All rights reserved. 
-             Licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank" style="color: inherit;">MIT License</a>.
+             Licensed under the <a href="https://github.com/lunar-shadow/course-site-generator/blob/main/LICENSE.txt" target="_blank" style="color: inherit;">MIT License</a>.
         </footer>
     </body>
     </html>
