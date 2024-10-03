@@ -35,7 +35,7 @@ def generate_html(course_dir, course_name, output_file):
             #header {{
                 display: flex;
                 align-items: center;
-                background-color: #ffffff;
+                background-color: #d7d9da;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                 padding: 10px 20px;
                 z-index: 1000;
@@ -83,7 +83,7 @@ def generate_html(course_dir, course_name, output_file):
             }}
             #sidebar {{
                 width: 20%;
-                background-color: #ffffff;
+                background-color: #d7d9da;
                 padding: 20px;
                 box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
                 overflow-y: auto;
@@ -91,8 +91,7 @@ def generate_html(course_dir, course_name, output_file):
                 font-size: 14px; /* Adjust the font size as needed */
             }}
             .dark-mode #sidebar {{
-                background-color: #1c1c1c;
-                /*color: #8db8cb; somehow this isn't refelcting from body */
+                background-color: #1c1c1c;   
             }}
             #sidebar.collapsed {{
                 width: 0;
@@ -106,7 +105,7 @@ def generate_html(course_dir, course_name, output_file):
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                background-color: #ffffff;
+                background-color: #d7d9da;
                 box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
                 transition: margin-left 0.3s;
             }}
@@ -146,17 +145,57 @@ def generate_html(course_dir, course_name, output_file):
             .radio-button {{
                 margin-right: 10px;
             }}
-            #toggleDarkMode {{
-                margin-left: auto;
-                margin-right: 20px;
-                font-size: 24px;
-                cursor: pointer;
-                background: none;
-                border: none;
-                color: #343a40;
+            .switch {{
+                position: fixed;
+                #top: 20px;
+                right: 20px;
+                width: 60px;
+                height: 34px;
             }}
-            .dark-mode #toggleDarkMode {{
-                color: #e0e0e0;
+            .switch input {{
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }}
+            .slider {{
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #969696;
+                transition: .4s;
+                border-radius: 34px;
+            }}
+            .slider:before {{
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: black;
+                transition: .4s;
+                border-radius: 50%;
+            }}
+            input:checked + .slider {{
+                background-color: #6190fe;
+            }}
+            input:checked + .slider:before {{
+                transform: translateX(26px);
+            }}
+            .slider:before {{
+                content: '\\263E';  /* Unicode for moon */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                color: #ffeb3b;
+            }}
+            input:checked + .slider:before {{
+                content: '\\2600';  /* Unicode for sun */
+                color: #ffeb3b;
             }}
             h2 {{
                font-weight: 400;
@@ -185,7 +224,10 @@ def generate_html(course_dir, course_name, output_file):
             <a id="homeIcon" href="index.html" style="text-decoration:none">&#8962;</a>
             <button id="toggleSidebar">&#9776;</button>
             <div id="courseTitle">{display_course_name}</div>
-            <button id="toggleDarkMode">🌙</button>
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
         </div>
         <div id="container">
             <div id="sidebar">
@@ -222,7 +264,7 @@ def generate_html(course_dir, course_name, output_file):
         </div>
         <footer>
              &copy; {current_year} <a href="https://github.com/lunar-shadow" target="_blank">lunar-shadow</a>. All rights reserved. 
-             Licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank" style="color: inherit;">MIT License</a>.
+             Licensed under the <a href="https://github.com/lunar-shadow/course-site-generator/blob/main/LICENSE.txt" target="_blank" style="color: inherit;">MIT License</a>.
         </footer>
         <script src="../assets/js/script.js"></script> 
     </body>
